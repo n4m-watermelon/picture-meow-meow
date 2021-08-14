@@ -23,15 +23,6 @@ router.post("/", async (req, res) => {
    } catch (error) {
     res.json({ message: err });
    }
-
-//    createANews
-//     .save()
-//     .then((data) => {
-//       res.json(data);
-//     })
-//     .catch((err) => {
-//       res.json({ message: err });
-//     });
 });
 router.delete("/:id", async (req, res) => {
   try {
