@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 app.use('/news' , newsRoute)
 
 mongoose.connect(
-  process.env.DATABASE_URL,
+ 'mongodb+srv://n4msama:nam205806@cluster0.9l5pk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => {
     console.log("connected to DB !");
