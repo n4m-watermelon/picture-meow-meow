@@ -25,4 +25,4 @@ mongoose.connect(
   }
 );
 
-app.listen(process.env.PORT || 5000 , ()=> console.log(`app listening on port ${port}`));
+app.listen(process.env.PORT || 5000 , ()=> console.log(`app listening on port ${process.env.PORT || 5000}`));
