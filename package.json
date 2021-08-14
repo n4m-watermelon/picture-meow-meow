@@ -4,7 +4,8 @@
   "description": "restful api",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "start": "node app.js"
   },
   "author": "n4msama",
   "license": "ISC",
