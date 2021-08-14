@@ -7,7 +7,6 @@ const db = require("./config/db/index")
 require("dotenv").config();
 
 
-db.connect()
 app.use(bodyParser.json())
 app.use(cors())
 const newsRoute = require("./routes/new")
@@ -19,6 +18,7 @@ app.get("/", (req, res) => {
 
 app.use('/news' , newsRoute)
 
+db.connect()
+let port = process.env.PORT || 5000
 
-
-app.listen(process.env.PORT || 5000 , ()=> console.log(`app listening on port ${process.env.PORT || 5000}`));
+app.listen(port , ()=> console.log(`app listening on port ${port}`));
