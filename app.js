@@ -9,7 +9,7 @@ require("dotenv").config();
 app.use(bodyParser.json())
 app.use(cors())
 const newsRoute = require("./routes/new")
-let port = 3000;
+
 
 app.get("/", (req, res) => {
     res.send("Hello world!");
@@ -25,4 +25,4 @@ mongoose.connect(
   }
 );
 
-app.listen(port , ()=> console.log(`app listening on port ${port}`));
+app.listen(process.env.PORT || 5000 , ()=> console.log(`app listening on port ${port}`));
