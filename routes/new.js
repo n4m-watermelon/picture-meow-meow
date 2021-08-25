@@ -11,18 +11,17 @@ router.get("/", async (req, res) => {
   }
 });
 router.post("/", async (req, res) => {
-
   const createANews = new News({
     title: req.body.title,
     srcSet: req.body.srcSet,
   });
 
-   try {
-     let data = await createANews.save()
-     res.json(data);
-   } catch (error) {
+  try {
+    let data = await createANews.save();
+    res.json(data);
+  } catch (error) {
     res.json({ message: err });
-   }
+  }
 });
 router.delete("/:id", async (req, res) => {
   try {
@@ -34,10 +33,15 @@ router.delete("/:id", async (req, res) => {
 });
 router.patch("/:id", async (req, res) => {
   try {
-    const updateANews = await News.updateOne({ _id: req.params.id }, {$set: {
-        title: req.body.title,
-        srcSet: req.body.srcSet,
-    }} );
+    const updateANews = await News.updateOne(
+      { _id: req.params.id },
+      {
+        $set: {
+          title: req.body.title,
+          srcSet: req.body.srcSet,
+        },
+      }
+    );
     res.json(updateANews);
   } catch (err) {
     res.json({ message: err });
