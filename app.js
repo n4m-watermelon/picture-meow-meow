@@ -6,7 +6,15 @@ const cors = require("cors");
 const db = require("./config/db/index");
 require("dotenv").config();
 app.use(bodyParser.json());
-app.use(cors());
+
+const corsOptions ={
+    "origin": "*",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false,
+    "optionsSuccessStatus": 204
+  } 
+
+app.use(cors(corsOptions));
 
 // const newsRoute = require("./routes/new")
 const imagesRoute = require("./routes/images");
