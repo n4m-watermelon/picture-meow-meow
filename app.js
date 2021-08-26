@@ -6,8 +6,6 @@ const db = require("./config/db/index");
 require("dotenv").config();
 app.use(bodyParser.json());
 
-
-
 const corsOptions ={credentials: true, origin: true}
 app.use(cors(corsOptions));
 const imagesRoute = require("./routes/images");
