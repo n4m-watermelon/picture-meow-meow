@@ -10,18 +10,17 @@ app.options("*", (req, res) => {
   res.status(200).send("Preflight request allowed");
 });
 const corsOptions ={
-    "origin": "*",
-    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-    "preflightContinue": false,
-    "optionsSuccessStatus": 204
+  origin:'http://localhost:3000', 
+  credentials:true,           
+  optionSuccessStatus:200
   } 
 
-  app.use(function(req,res,next){
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, PATCH");
-    res.header("Access-Control-Allow-Headers", "Accept, Content-Type, Authorization, X-Requested-With");
-    next();
-  });
+  // app.use(function(req,res,next){
+  //   res.header("Access-Control-Allow-Origin", "*");
+  //   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, PATCH");
+  //   res.header("Access-Control-Allow-Headers", "Accept, Content-Type, Authorization, X-Requested-With");
+  //   next();
+  // });
 
 
 app.use(cors(corsOptions));
