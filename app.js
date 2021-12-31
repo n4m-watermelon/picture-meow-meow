@@ -10,10 +10,13 @@ const corsOptions ={credentials: true, origin: true}
 app.use(cors(corsOptions));
 const imagesRoute = require("./routes/images");
 const loginRoute = require("./routes/login")
-
+const postRoute = require("./routes/post")
 
 app.use("/api/login", loginRoute)
 app.use("/api/images", imagesRoute);
+app.use("/api/post", imagesRoute);
+
+
 db.connect();
 let port = process.env.PORT || 5000;
 
