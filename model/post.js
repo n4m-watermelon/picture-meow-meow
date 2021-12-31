@@ -6,6 +6,7 @@ const postSchema = mongoose.Schema({
   cloudinary_id: String,
   img_url: String,
   author: String,
+  author_name: String,
 },
   {
     timestamps: true
