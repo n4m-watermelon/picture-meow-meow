@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const post = require("../model/post");
 const verify = require("../verifyToken");
+const user = require("../model/login");
 const cloudinary = require("../config/cloudinary/index");
 const upload = require("../utils/multer");
 
@@ -13,8 +14,10 @@ router.get("/", verify, async (req, res) => {
     res.json({ message: err });
   }
 });
+
 router.post("/", verify,  upload.single("image"), async (req, res) => {
   try {
+    let authorS1 = await user.findById(req.user._id);
     const result = await cloudinary.uploader.upload(req.file.path);
     let postSave = new post({
       title: req.body.title,
@@ -22,6 +25,7 @@ router.post("/", verify,  upload.single("image"), async (req, res) => {
       cloudinary_id: result.public_id,
       img_url: result.secure_url,
       author: req.user._id,
+      author_name:authorS1.username
     });
     let savedData = await postSave.save();
     res.json(savedData);
