@@ -7,7 +7,7 @@ const upload = require("../utils/multer");
 
 router.get("/", verify, async (req, res) => {
   try {
-    const allPosts = await post.find();
+    const allPosts = await post.find().sort({createdAt: 'desc'});
     res.json(allPosts);
   } catch (err) {
     res.json({ message: err });
@@ -56,7 +56,6 @@ router.delete("/:id", verify, async (req, res) => {
     let findImage = await post.findById(req.params.id);
     await cloudinary.uploader.destroy(findImage.cloudinary_id);
     const afterRemove = await images.remove({ _id: req.params.id });
-
     res.json(afterRemove);
   } catch (error) {
     console.log(error);
