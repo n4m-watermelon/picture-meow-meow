@@ -2,9 +2,7 @@ const express = require("express");
 const router = express.Router();
 const post = require("../model/post");
 const verify = require("../verifyToken");
-
 const cloudinary = require("../config/cloudinary/index");
-
 const upload = require("../utils/multer");
 
 router.get("/", verify, async (req, res) => {
@@ -16,9 +14,10 @@ router.get("/", verify, async (req, res) => {
   }
 });
 
-router.post("/", verify, upload.single("image"), async (req, res) => {
+router.post("/", verify,  upload.single("image"), async (req, res) => {
   try {
     const result = await cloudinary.uploader.upload(req.file.path);
+    // console.log("asdasdasd")
     let postSave = new post({
       title: req.body.title,
       description: req.body.description,
