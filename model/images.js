@@ -6,10 +6,11 @@ const imageSchema = mongoose.Schema({
   cloudinary_id: String,
   img_url: String,
   author: String,
-  date: {
-    type: Date,
-    default: Date.now(),
-  },
-});
+
+},
+  {
+    timestamps: true
+  }
+);
 
 module.exports = mongoose.model("images", imageSchema);

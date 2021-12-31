@@ -2,9 +2,8 @@ const mongoose = require('mongoose');
 const newsSchema = mongoose.Schema({
     title: String,
     srcSet: String,
-    date:{
-        type: Date,
-        default: Date.now()
-    }
-})
+},
+  {
+    timestamps: true
+  })
 module.exports = mongoose.model('news', newsSchema)
