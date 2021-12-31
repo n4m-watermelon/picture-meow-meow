@@ -13,11 +13,9 @@ router.get("/", verify, async (req, res) => {
     res.json({ message: err });
   }
 });
-
 router.post("/", verify,  upload.single("image"), async (req, res) => {
   try {
     const result = await cloudinary.uploader.upload(req.file.path);
-    // console.log("asdasdasd")
     let postSave = new post({
       title: req.body.title,
       description: req.body.description,
